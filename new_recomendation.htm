@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarea 7 – new_recommendation.png</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    input, textarea {
+      background: #0f172a;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      outline: none;
+      width: 180px;
+    }
+
+    textarea {
+      width: 100%;
+      resize: none;
+      height: 70px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #6366f1, #3b82f6);
+      border: none;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #7c3aed, #2563eb);
+    }
+
+    .recomendaciones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2 {
+      margin: 0;
+      color: #f9fafb;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Nuevas Recomendaciones</h1>
+
+  <form id="form">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="text" id="cargo" placeholder="Cargo o profesión" required>
+    <textarea id="mensaje" placeholder="Escribe la recomendación..." required></textarea>
+    <button type="submit">Agregar Recomendación</button>
+  </form>
+
+  <div class="recomendaciones" id="lista">
+    <div class="card">
+      <h2>María López – Desarrolladora Frontend</h2>
+      <p>Dayana demuestra una gran pasión por el desarrollo web y la creatividad.</p>
+    </div>
+    <div class="card">
+      <h2>Carlos Méndez – Líder de Proyecto</h2>
+      <p>Trabajar con Dayana siempre es un placer. Tiene excelentes habilidades técnicas.</p>
+    </div>
+    <div class="card">
+      <h2>Laura García – Diseñadora UX/UI</h2>
+      <p>Combina su talento creativo con un sólido conocimiento técnico.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('form');
+    const lista = document.getElementById('lista');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const cargo = document.getElementById('cargo').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+
+      if (nombre && cargo && mensaje) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <h2>${nombre} – ${cargo}</h2>
+          <p>${mensaje}</p>
+        `;
+        lista.appendChild(card);
+
+        form.reset();
+        alert('✅ Nueva recomendación agregada correctamente');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tarea – profile_name.png</title>
+  <style>
+    :root{
+      --bg:#380202; --panel:#2b0606; --panel2:#271111;
+      --text:#f8fafc; --muted:#94a3b8; --line:#263143;
+      --accent:#a78bfa; --ok:#22c55e; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:linear-gradient(120deg,#030303,#030303 55%,#030303);
+      color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:28px;
+    }
+    .app {
+      width:min(1200px,95vw); background:linear-gradient(0deg,#030303,#030303);
+      border:1px solid #18243a; border-radius:24px; box-shadow:var(--shadow); overflow:hidden;
+    }
+    header {
+      display:flex; align-items:center; gap:16px; padding:18px 22px; background:#030303; border-bottom:1px solid #030303;
+    }
+    .logo {
+      width:40px; height:40px; border-radius:12px; background:radial-gradient(circle at 30% 30%, #a78bfa, #6ee7b7 60%, #60a5fa);
+      border:1px solid #25314b;
+    }
+    .brand { display:flex; flex-direction:column; line-height:1.1; }
+    /* “NOMBRE” estilizado arriba a la izquierda */
+    .brand .name {
+      font-weight:800; font-size:1.65rem; letter-spacing:.04em;
+      background:linear-gradient(90deg,#a78bfa,#60a5fa,#34d399);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow:0 0 18px rgba(99,102,241,.22);
+    }
+    .brand .sub { font-size:.9rem; color:var(--muted) }
+
+    .wrap { padding:24px; }
+    .grid {
+      display:grid; grid-template-columns:1.2fr 1.2fr .8fr; gap:22px;
+    }
+    .card {
+      background:linear-gradient(180deg,#030303,#030303 60%, #030303);
+      border:1px solid #1a2642; border-radius:18px; padding:18px;
+    }
+    h2 { margin:0 0 12px; font-size:1.15rem; letter-spacing:.02em; color:#c7d2fe }
+    label{ display:block; font-size:.9rem; color:var(--muted); margin:10px 2px 6px }
+    input,select{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid #24314e;
+      background:#0a1326; color:var(--text); outline:none;
+    }
+    .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
+    .photo{
+      height:260px; border:1px dashed #2a3b62; border-radius:14px;
+      display:grid; place-items:center; color:#93c5fd; background:#091127; overflow:hidden; position:relative;
+    }
+    .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .uploader { display:flex; gap:10px; align-items:center; margin-top:10px }
+    .actions{ display:flex; gap:12px; justify-content:flex-end; margin-top:18px; }
+    button{
+      padding:10px 14px; border-radius:12px; border:1px solid #24314e; background:#0b1426;
+      color:var(--text); cursor:pointer;
+    }
+    .primary{ background:linear-gradient(90deg,#7c3aed,#2563eb); border-color:#3b82f6; }
+    .hint{ margin:10px 4px 0; color:var(--muted); font-size:.85rem }
+    footer{
+      padding:14px 22px; color:var(--muted); border-top:1px solid #1b2741; background:#0b1426;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .badge{ font-size:.8rem; padding:6px 10px; border-radius:999px; border:1px solid #203050; color:#cbd5e1; }
+  </style>
+</head>
+<body>
+  <div class="app" id="capture">
+    <header>
+      <div class="logo" aria-hidden="true"></div>
+      <div class="brand">
+        <div class="name">Dayanna</div>
+        <div class="sub">Aplicación / Perfil del usuario</div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="grid">
+        <!-- Columna 1 -->
+        <section class="card">
+          <h2>Información personal</h2>
+          <label>Nombre</label>
+          <input value="Dayana Andrea" />
+          <label>Apellido</label>
+          <input value="Quintero Castilla" />
+          <div class="field-row">
+            <div>
+              <label>Cédula</label>
+              <input value="1004945305" />
+            </div>
+            <div>
+              <label>Fecha de nacimiento</label>
+              <input value="2002-04-09" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div>
+              <label>Ciudad</label>
+              <input value="Bogotá" />
+            </div>
+            <div>
+              <label>País</label>
+              <input value="Colombia" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Columna 2 -->
+        <section class="card">
+          <h2>Contacto</h2>
+          <label>Correo</label>
+          <input value="zjudayana@gmail.com" />
+          <label>Teléfono</label>
+          <input value="+57 3248996609" />
+          <label>GitHub</label>
+          <input value="Dayana055" />
+          <label>Ocupación</label>
+          <input value="Full stak" />
+        </section>
+
+        <!-- Columna 3 -->
+        <section class="card">
+          <h2>Foto</h2>
+          <div class="photo" id="photo">
+            <img src="dayanaqc.webp"alt="foto de dayanna andrea quintero castilla">
+          </div>
+          <div class="uploader">
+            <input type="file" id="file" accept="image/*" />
+            <small class="hint">Sube tu foto (se ajusta automáticamente)</small>
+          </div>
+          <p class="hint">Todos los campos son visibles en la exportación.</p>
+        </section>
+      </div>
+
+      <div class="actions">
+        <button id="btn-png" class="primary">Descargar PNG</button>
+        <button id="btn-reset">Reset</button>
+      </div>
+    </div>
+
+    <footer>
+      <span class="badge">HTML + CSS + JS</span>
+      <span>Exporta como <strong>profile_name.png</strong></span>
+    </footer>
+  </div>
+
+  <!-- Librería para exportar a PNG -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    const captureEl = document.getElementById('capture');
+    const btnPng = document.getElementById('btn-png');
+    const btnReset = document.getElementById('btn-reset');
+    const fileInput = document.getElementById('file');
+    const photo = document.getElementById('photo');
+    const photoTxt = document.getElementById('photoTxt');
+
+    // Cargar y previsualizar la foto (sin problemas de rutas/CORS)
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        let img = photo.querySelector('img');
+        if (!img){
+          img = document.createElement('img');
+          photo.appendChild(img);
+        }
+        img.src = reader.result; // DataURL
+        if (photoTxt) photoTxt.remove();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Exportar a PNG
+    btnPng.addEventListener('click', async () => {
+      window.scrollTo(0,0);
+      // Esperar a que todas las imágenes terminen de cargar
+      await Promise.all(
+        Array.from(document.images).filter(i => !i.complete).map(i => new Promise(res => { i.onload = i.onerror = res; }))
+      );
+      const canvas = await html2canvas(captureEl, { backgroundColor: null, scale: 2, useCORS: true });
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = 'profile_name.png';
+      a.click();
+    });
+
+    // Reset
+    btnReset.addEventListener('click', () => {
+      document.querySelectorAll('input[type="text"], input:not([type])').forEach(i => i.value = '');
+      const img = photo.querySelector('img'); if (img) img.remove();
+      if (!photoTxt) {
+        const s = document.createElement('span'); s.id = 'photoTxt'; s.textContent = 'FOTO'; photo.appendChild(s);
+      }
+    });
+  </script>
+</body>
+</html>

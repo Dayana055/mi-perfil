@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarea 9 – popup.png</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(120deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #93c5fd;
+    }
+
+    form {
+      background: #111827;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    textarea {
+      resize: none;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #1e3a8a;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #7c3aed, #2563eb);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    /* POPUP */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #1e293b;
+      padding: 25px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      color: #a5b4fc;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-align: center;
+      opacity: 0;
+    }
+
+    .popup.active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Deja una recomendación</h1>
+
+  <form id="form">
+    <textarea id="mensaje" rows="4" placeholder="Escribe tu recomendación aquí..."></textarea>
+    <button type="submit">Enviar recomendación</button>
+  </form>
+
+  <div id="popup" class="popup">
+    ¡Gracias por dejar una recomendación!
+  </div>
+
+  <script>
+    const form = document.getElementById('form');
+    const popup = document.getElementById('popup');
+    const mensaje = document.getElementById('mensaje');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (mensaje.value.trim() === "") {
+        alert("Por favor escribe una recomendación antes de enviar.");
+        return;
+      }
+
+      // Mostrar popup
+      popup.classList.add('active');
+
+      // Ocultar popup después de 3 segundos
+      setTimeout(() => {
+        popup.classList.remove('active');
+        mensaje.value = "";
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>

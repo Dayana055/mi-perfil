@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarea 8 – home_icon.png</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+    }
+
+    nav {
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg,#a78bfa,#60a5fa);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .menu {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .menu a {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .menu a:hover {
+      color: #93c5fd;
+      text-decoration: underline;
+    }
+
+    /* Ícono de inicio */
+    .home-icon {
+      width: 20px;
+      height: 20px;
+      filter: invert(90%);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Dayana QC</div>
+    <div class="menu">
+      <a href="#">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" class="home-icon" alt="icono de inicio">
+        Inicio
+      </a>
+      <a href="#">Acerca de</a>
+      <a href="#">Proyectos</a>
+      <a href="#">Contacto</a>
+    </div>
+  </nav>
+
+  <section style="padding:40px; text-align:center;">
+    <h1>Bienvenida a mi página</h1>
+    <p>Este es el ícono de Inicio visible en la barra de navegación.</p>
+  </section>
+
+</body>
+</html>
